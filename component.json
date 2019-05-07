@@ -1,0 +1,134 @@
+{
+    "title": "AutomationManagement",
+    "docsUrl": "",
+    "url": "https://api.apis.guru/v2/specs/azure.com/automation-credential/2015-10-31/swagger.json",
+    "envVars": {
+        "OAUTH_CLIENT_ID": {
+            "description": "OAuth Client ID"
+        },
+        "OAUTH_CLIENT_SECRET": {
+            "description": "OAuth Client Secret"
+        }
+    },
+    "credentials": {
+        "fields": {
+            "server": {
+                "label": "Server",
+                "viewClass": "SelectView",
+                "model": [
+                    "https://management.azure.com/",
+                    "--- Custom URL"
+                ],
+                "required": true
+            },
+            "otherServer": {
+                "label": "Custom Server URL",
+                "viewClass": "TextFieldView"
+            },
+            "azure_auth": {
+                "label": "Azure Active Directory OAuth2 Flow",
+                "viewClass": "OAuthFieldView"
+            }
+        },
+        "oauth2": {
+            "client_id": "{{OAUTH_CLIENT_ID}}",
+            "client_secret": "{{OAUTH_CLIENT_SECRET}}",
+            "auth_uri": "https://login.microsoftonline.com/common/oauth2/authorize"
+        }
+    },
+    "triggers": {
+        "startFlow": {
+            "main": "./lib/triggers/startFlow.js",
+            "type": "polling",
+            "title": "Start Flow",
+            "fields": {}
+        }
+    },
+    "actions": {
+        "Credential_ListByAutomationAccount": {
+            "main": "./lib/actions/Credential_ListByAutomationAccount.js",
+            "title": "Retrieve a list of credentials.",
+            "description": "Retrieve a list of credentials.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Credential_ListByAutomationAccount.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Credential_Delete": {
+            "main": "./lib/actions/Credential_Delete.js",
+            "title": "Delete the credential.",
+            "description": "Delete the credential.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Credential_Delete.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Credential_Get": {
+            "main": "./lib/actions/Credential_Get.js",
+            "title": "Retrieve the credential identified by credential name.",
+            "description": "Retrieve the credential identified by credential name.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Credential_Get.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Credential_Update": {
+            "main": "./lib/actions/Credential_Update.js",
+            "title": "Update a credential.",
+            "description": "Update a credential.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Credential_Update.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        },
+        "Credential_CreateOrUpdate": {
+            "main": "./lib/actions/Credential_CreateOrUpdate.js",
+            "title": "Create a credential.",
+            "description": "Create a credential.",
+            "fields": {
+                "verbose": {
+                    "viewClass": "CheckBoxView",
+                    "label": "Debug this step (log more data)"
+                }
+            },
+            "metadata": {
+                "in": "./lib/schemas/Credential_CreateOrUpdate.in.json",
+                "out": {
+                    "type": "object"
+                }
+            }
+        }
+    }
+}
